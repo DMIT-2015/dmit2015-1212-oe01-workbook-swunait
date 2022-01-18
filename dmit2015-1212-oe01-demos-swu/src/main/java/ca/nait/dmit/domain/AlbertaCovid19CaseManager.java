@@ -14,10 +14,24 @@ import java.util.stream.Collectors;
 
 public class AlbertaCovid19CaseManager {
 
+    private static AlbertaCovid19CaseManager instance;
+
+    public static AlbertaCovid19CaseManager getInstance() throws IOException {
+        // https://www.journaldev.com/1377/java-singleton-design-pattern-best-practices-examples#thread-safe-singleton
+        if(instance == null){
+            synchronized (AlbertaCovid19CaseManager.class) {
+                if(instance == null){
+                    instance = new AlbertaCovid19CaseManager();
+                }
+            }
+        }
+        return instance;
+    }
+
     @Getter
     private List<AlbertaCovid19Case> albertaCovid19CaseList = new ArrayList<>();
 
-    public AlbertaCovid19CaseManager() throws IOException {
+    private AlbertaCovid19CaseManager() throws IOException {
         try(var reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(
                 "/data/covid-19-alberta-statistics-data.csv")))) {
 
@@ -56,10 +70,39 @@ public class AlbertaCovid19CaseManager {
     public List<String> findDistinctAhsZone() {
         return albertaCovid19CaseList
                 .stream()
-                .map(AlbertaCovid19Case::getAhsZone)
+//                .map(AlbertaCovid19Case::getAhsZone)
+                .map(item -> item.getAhsZone())
                 .distinct()
+                .filter(item -> item.isEmpty() == false)
                 .sorted()
                 .collect(Collectors.toList());
     }
+
+    public long activeCaseCount() {
+        return albertaCovid19CaseList
+                .stream()
+                .filter(item -> item.getCaseStatus().equalsIgnoreCase("Active"))
+                .count();
+    }
+
+    public long activeCaseCountByAhsZone(String ahsZone) {
+        return albertaCovid19CaseList
+                .stream()
+//                .filter(item -> item.getCaseStatus().equalsIgnoreCase("Active")
+//                        && item.getAhsZone().equalsIgnoreCase(ahsZone)
+//                )
+                .filter(item -> item.getCaseStatus().equalsIgnoreCase("Active"))
+                .filter(item -> item.getAhsZone().equalsIgnoreCase(ahsZone))
+                .count();
+    }
+
+    public long caseReportedCountByAhsZoneAndDateRange(String ahsZone, LocalDate fromDate, LocalDate toDate) {
+        return albertaCovid19CaseList
+                .stream()
+                .filter(item -> item.getAhsZone().equalsIgnoreCase(ahsZone))
+                .filter(item -> !item.getDateReported().isBefore(fromDate) && !item.getDateReported().isAfter(toDate)) // INCLUSIVE date range
+                .count();
+    }
+
 
 }
