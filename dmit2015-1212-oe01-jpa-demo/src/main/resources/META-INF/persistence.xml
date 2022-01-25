@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+<!--    <persistence-unit name="h2database-jpa-pu" transaction-type="JTA">-->
+<!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+<!--        <jta-data-source>java:app/datasources/h2databaseDS</jta-data-source>-->
+
+<!--        <properties>-->
+<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>-->
+<!--            &lt;!&ndash; https://jakarta.ee/specifications/persistence/3.0/jakarta-persistence-spec-3.0.html#a12917 &ndash;&gt;-->
+<!--            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>-->
+
+<!--&lt;!&ndash;          <property name="jakarta.persistence.sql-load-script-source" value="META-INF/sql/import-data.sql" />&ndash;&gt;-->
+
+<!--            &lt;!&ndash;-->
+<!--                        <property name="jakarta.persistence.schema-generation.scripts.action" value="drop-and-create"/>-->
+<!--                        <property name="jakarta.persistence.schema-generation.scripts.create-target"-->
+<!--                                    value="/home/user2015/Desktop/create-tables.sql" />-->
+<!--                        <property name="jakarta.persistence.schema-generation.scripts.drop-target"-->
+<!--                                    value="/home/user2015/Desktop/drop-tables.sql" />-->
+<!--            &ndash;&gt;-->
+<!--        </properties>-->
+
+<!--    </persistence-unit>-->
+
+    <!--
+        <persistence-unit name="mssql-jpa-pu" transaction-type="JTA">
+            <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+            <jta-data-source>java:app/datasources/mssqlDS</jta-data-source>
+
+            <properties>
+                <property name="hibernate.dialect" value="org.hibernate.spatial.dialect.sqlserver.SqlServer2012SpatialDialect"/>
+                <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+            </properties>
+        </persistence-unit>
+      -->
+
+
+        <persistence-unit name="oracle-jpa-pu" transaction-type="JTA">
+            <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+             <jta-data-source>java:app/datasources/oracleUser2015DS</jta-data-source>
+
+             <properties>
+<!--                <property name="hibernate.dialect" value="org.hibernate.spatial.dialect.oracle.OracleSpatialSDO10gDialect" />-->
+                 <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect" />
+                 <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+                 <property name="jakarta.persistence.sql-load-script-source" value="META-INF/sql/import-data.sql" />
+             </properties>
+         </persistence-unit>
+
+</persistence>
+

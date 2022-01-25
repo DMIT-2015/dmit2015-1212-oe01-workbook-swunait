@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<arquillian xmlns="http://jboss.org/schema/arquillian"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://jboss.org/schema/arquillian
+                http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+    <defaultProtocol type="Servlet 5.0"/>
+
+    <!-- Uncomment to have test archives exported to the file system for inspection -->
+    <!--    <engine>-->
+    <!--        <property name="deploymentExportPath">target/dmit2015-demo.war</property>-->
+    <!--    </engine>-->
+
+    <!-- Example configuration for a managed WildFly / JBoss EAP instance -->
+    <container qualifier="managed">
+        <!-- By default, Arquillian will use the JBOSS_HOME environment variable to find the WildFly / JBoss EAP installation.
+             If you prefer not to define the JBOSS_HOME environment variable, alternatively you can uncomment the
+             following `jbossHome` property and replace EAP_HOME with the path to your WildFly / JBoss EAP installation. -->
+        <configuration>
+            <property name="jbossHome">/home/user2015/jdk/server/wildfly-preview-26.0.0.Final</property>
+        </configuration>
+    </container>
+
+</arquillian>
+
