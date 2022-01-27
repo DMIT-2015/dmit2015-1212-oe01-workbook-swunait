@@ -12,7 +12,7 @@
     <!--    </engine>-->
 
     <!-- Example configuration for a managed WildFly / JBoss EAP instance -->
-    <container qualifier="managed">
+    <container qualifier="wildfly-managed" default="true">
         <!-- By default, Arquillian will use the JBOSS_HOME environment variable to find the WildFly / JBoss EAP installation.
              If you prefer not to define the JBOSS_HOME environment variable, alternatively you can uncomment the
              following `jbossHome` property and replace EAP_HOME with the path to your WildFly / JBoss EAP installation. -->

@@ -13,7 +13,7 @@ import jakarta.persistence.PersistenceContext;
 @Transactional
 public class MovieRepository {
 
-    @PersistenceContext(unitName = "oracle-jpa-pu")
+    @PersistenceContext(unitName = "hsqldatabase-jpa-pu")
     private EntityManager em;
 
     public void add(Movie newMovie) {

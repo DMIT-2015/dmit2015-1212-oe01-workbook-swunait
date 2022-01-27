@@ -1,8 +1,5 @@
-INSERT INTO movies(title,releaseDate,genre,price,rating)
-    VALUES('When Harry Met Sally',TO_DATE('1989-2-12','YYYY-MM-DD'),'Romantic Comedy',7.99,'G');
-INSERT INTO movies(title,releaseDate,genre,price,rating)
-    VALUES('Ghostbusters',TO_DATE('1984-3-13','YYYY-MM-DD'),'Comedy',8.99,'PG');
-INSERT INTO movies(title,releaseDate,genre,price,rating)
-    VALUES('Ghostbusters 2',TO_DATE('1986-2-23','YYYY-MM-DD'),'Comedy',9.99,'PG');
-INSERT INTO movies(title,releaseDate,genre,price,rating)
-    VALUES('Rio Bravo',TO_DATE('1959-4-15','YYYY-MM-DD'),'Western',7.99,'PG-13');
+INSERT INTO movies(title,releaseDate,genre,price,rating,createdDateTime,lastModifiedDateTime) VALUES('When Harry Met Sally','1989-2-12','Romantic Comedy',7.99,'G','2021-02-25 08:00:08','2021-02-25 08:15:08');
+INSERT INTO movies(title,releaseDate,genre,price,rating,createdDateTime,lastModifiedDateTime) VALUES('Ghostbusters','1984-3-13','Comedy',8.99,'PG','2021-02-25 08:00:08','2021-02-25 08:15:08');
+INSERT INTO movies(title,releaseDate,genre,price,rating,createdDateTime,lastModifiedDateTime) VALUES('Ghostbusters 2','1986-2-23','Comedy',9.99,'PG','2021-02-25 08:00:08','2021-02-25 08:15:08');
+INSERT INTO movies(title,releaseDate,genre,price,rating,createdDateTime,lastModifiedDateTime) VALUES('Rio Bravo','1959-4-15','Western',7.99,'PG-13','2021-02-25 08:00:08','2021-02-25 08:15:08');
+

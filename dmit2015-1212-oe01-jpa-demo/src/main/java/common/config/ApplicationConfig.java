@@ -1,24 +1,25 @@
 package common.config;
-
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.annotation.sql.DataSourceDefinitions;
 
 @DataSourceDefinitions({
+
 //	@DataSourceDefinition(
 //		name="java:app/datasources/h2databaseDS",
 //		className="org.h2.jdbcx.JdbcDataSource",
-////		url="jdbc:h2:file:~/dmit2015db",
-//        url="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1",
+////		url="jdbc:h2:file:D:/temp/dmit2015-demos-db",
+//		url="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1",
 //		user="sa",
 //		password="sa"),
 
-//	@DataSourceDefinition(
-//		name="java:app/datasources/hsqldatabaseDS",
-//		className="org.hsqldb.jdbc.JDBCDataSource",
-//		url="jdbc:hsqldb:file:~/databases/dmit2015-1212-assignment02-hsqldb;shutdown=true",
-//		user="user2015",
-//		password="Password2015"),
+		@DataSourceDefinition(
+				name="java:app/datasources/hsqldatabaseDS",
+				className="org.hsqldb.jdbc.JDBCDataSource",
+		url="jdbc:hsqldb:file:~/jdk/databases/dmit2015-demos-hsqldb;shutdown=true",
+//				url="jdbc:hsqldb:mem:dmit2015hsqldb",
+				user="user2015",
+				password="Password2015"),
 
 //	@DataSourceDefinition(
 //		name="java:app/datasources/mssqlDS",
@@ -27,12 +28,12 @@ import jakarta.annotation.sql.DataSourceDefinitions;
 //		user="user2015",
 //		password="Password2015"),
 
-	@DataSourceDefinition(
-	 	name="java:app/datasources/oracleUser2015DS",
-	 	className="oracle.jdbc.pool.OracleDataSource",
-	 	url="jdbc:oracle:thin:@localhost:1521/xepdb1",
-	 	user="user2015",
-	 	password="Password2015"),
+//	@DataSourceDefinition(
+//	 	name="java:app/datasources/oracleUser2015DS",
+//	 	className="oracle.jdbc.pool.OracleDataSource",
+//	 	url="jdbc:oracle:thin:@localhost:1521/xepdb1",
+//	 	user="user2015",
+//	 	password="Password2015"),
 
 //	@DataSourceDefinition(
 //		name="java:app/datasources/mysqlDS",

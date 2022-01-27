@@ -17,6 +17,8 @@
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
           <factory-entry name="h2database-jpa-pu" />
+          <factory-entry name="hsqldatabase-jpa-pu" />
+          <factory-entry name="oracle-jpa-pu" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
@@ -37,7 +39,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.22" level="project" />
     <orderEntry type="library" name="Maven: org.locationtech.jts:jts-core:1.18.2" level="project" />
-    <orderEntry type="library" name="Maven: com.h2database:h2:2.1.210" level="project" />
+    <orderEntry type="library" name="Maven: org.hsqldb:hsqldb:2.6.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.platform:jakarta.jakartaee-api:9.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core-jakarta:5.6.4.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.4.3.Final" level="project" />
@@ -73,6 +75,12 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-runner:1.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-launcher:1.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-suite-api:1.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-suite-commons:1.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-impl-maven:3.1.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-api-maven:3.1.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-api:3.1.4" level="project" />
@@ -126,65 +134,104 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.protocol:arquillian-protocol-servlet-jakarta:1.7.0.Alpha10" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.arquillian.container:arquillian-container-spi:1.7.0.Alpha10" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:2.0.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.arquillian:wildfly-arquillian-container-managed:3.0.1.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.arquillian:wildfly-arquillian-common:3.0.1.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.testenricher:arquillian-testenricher-cdi:1.7.0.Alpha10" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.testenricher:arquillian-testenricher-ejb:1.7.0.Alpha10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.arquillian:wildfly-arquillian-container-managed:5.0.0.Alpha2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.arquillian:wildfly-arquillian-common:5.0.0.Alpha2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.testenricher:arquillian-testenricher-cdi-jakarta:1.7.0.Alpha10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.testenricher:arquillian-testenricher-ejb-jakarta:1.7.0.Alpha10" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.testenricher:arquillian-testenricher-initialcontext:1.7.0.Alpha10" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.testenricher:arquillian-testenricher-resource:1.7.0.Alpha10" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.protocol:arquillian-protocol-servlet:1.7.0.Alpha10" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.arquillian:wildfly-arquillian-testenricher-msc:3.0.1.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-server:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-controller:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-core-security:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-core-security-api:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.logmanager:jboss-logmanager:2.1.17.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss:staxmapper:1.3.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.projectodd.vdx:vdx-wildfly:1.1.6" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.projectodd.vdx:vdx-core:1.1.6" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-core-management-client:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-domain-http-interface:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security.elytron-web:undertow-server:1.8.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-deployment-repository:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-platform-mbean:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-process-controller:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-network:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-version:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.classfilewriter:jboss-classfilewriter:1.2.4.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.invocation:jboss-invocation:1.6.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.modules:jboss-modules:1.10.2.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.stdio:jboss-stdio:1.1.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss:jboss-vfs:3.2.15.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: io.undertow:undertow-core:2.2.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.jgit:org.eclipse.jgit.ssh.apache:5.9.0.202009080501-r" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.jgit:org.eclipse.jgit:5.9.0.202009080501-r" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.googlecode.javaewah:JavaEWAH:1.1.7" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.sshd:sshd-common:2.4.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.sshd:sshd-core:2.4.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-controller-client:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-protocol:13.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.testenricher:arquillian-testenricher-resource-jakarta:1.7.0.Alpha10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.arquillian:wildfly-arquillian-testenricher-msc:5.0.0.Alpha2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.msc:jboss-msc:1.4.13.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-server:16.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-controller-client:16.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-protocol:16.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.modules:jboss-modules:1.11.0.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss:jboss-dmr:1.5.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.threads:jboss-threads:2.4.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-auth:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-base:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-security-manager:1.16.1.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.plugins:wildfly-plugin-core:2.0.2.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-base:2.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.common:wildfly-common:1.5.4.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.arquillian:wildfly-arquillian-protocol-jmx:3.0.1.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron:1.13.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.arquillian:wildfly-arquillian-protocol-jmx:5.0.0.Alpha2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-asn1:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-audit:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-auth-server:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-auth-server-deprecated:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-auth-server-http:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-auth-server-sasl:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-auth-util:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.sshd:sshd-common:2.3.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-client:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-credential-source-impl:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-provider-util:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-credential:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-credential-source-deprecated:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-credential-store:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-digest:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-encryption:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-http:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-http-basic:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-http-bearer:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-http-cert:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-http-deprecated:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-http-digest:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-http-external:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-http-form:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-http-spnego:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-http-sso:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-http-util:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-jacc:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-jaspi:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-json-util:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-keystore:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-mechanism:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-mechanism-digest:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-mechanism-gssapi:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-mechanism-http:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-mechanism-oauth2:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-mechanism-scram:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-password-impl:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-permission:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-realm:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-realm-jdbc:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-realm-ldap:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-realm-token:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-anonymous:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-auth-util:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-deprecated:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-digest:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-entity:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-external:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-gs2:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-gssapi:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-localuser:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-oauth2:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-otp:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-plain:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-sasl-scram:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-security-manager-action:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-ssl:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-util:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-x500:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-x500-cert:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-x500-cert-acme:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-x500-cert-util:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-x500-deprecated:1.16.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.security:wildfly-elytron-x500-principal:1.16.1.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.protocol:arquillian-protocol-jmx:1.7.0.Alpha10" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-jmx:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.msc:jboss-msc:1.4.12.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-remoting:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-domain-management:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.picketbox:picketbox:5.0.3.Final-redhat-00006" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-io:13.0.0.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.xnio:xnio-api:3.8.2.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-jmx:16.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.xnio:xnio-api:3.8.4.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.xnio:xnio-nio:3.8.4.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.marshalling:jboss-marshalling:2.0.12.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.marshalling:jboss-marshalling-river:2.0.12.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.remoting:jboss-remoting:5.0.23.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.client:wildfly-client-config:1.0.1.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.threads:jboss-threads:2.3.3.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.xnio:xnio-nio:3.8.2.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.marshalling:jboss-marshalling:2.0.9.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.marshalling:jboss-marshalling-river:2.0.9.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.remoting:jboss-remoting:5.0.19.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.remotingjmx:remoting-jmx:3.0.4.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-launcher:13.0.0.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-launcher:16.0.1.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.arquillian.core:arquillian-core-api:1.7.0.Alpha10" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.arquillian.extension:arquillian-transaction-jta:1.0.5" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.arquillian.extension:arquillian-transaction-api:1.0.5" level="project" />

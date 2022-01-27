@@ -1,15 +1,19 @@
 package ca.nait.dmit.dmit20151212oe01jpademo.entity;
 
-import lombok.*;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+/**
+ * The persistent class for the movies database table.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -37,35 +41,36 @@ public class Movie implements Serializable {
     @Column(nullable = false, length = 30)
     @NotBlank(message = "The field Genre is required.")
     @Pattern(regexp = "^[A-Z]+[a-zA-Z]*$",  // Must only use letters.
-                                            // The first letter is required to be uppercase. White space, numbers, and special characters are not allowed.
+            // The first letter is required to be uppercase. White space, numbers, and special characters are not allowed.
             message = "The field Genre must match the regular expression '^[A-Z]+[a-zA-Z]*$'.")
     private String genre;
 
     @Column(nullable = false, length = 5)
     @NotBlank(message = "The field Rating is required.")
     @Pattern(regexp = "^[A-Z]+[a-zA-Z0-9\"\"'\\s-]*$", // The first character can be an uppercase letter
-                                                        // Allows special characters and numbers in subsequent spaces. PG-13 is valid but fails for a Genre
+            // Allows special characters and numbers in subsequent spaces. PG-13 is valid but fails for a Genre
             message = "The field Rating must match the regular expression '^[A-Z]+[a-zA-Z0-9\"\"'\\s-]*$'.")
     private String rating;      // G, PG, PG-13, R, NC-17
 
 
-//	@Version
-//	private Integer version;
-//
-//	@Column(nullable = false)
-//	private LocalDateTime createdDateTime;
-//
-//	@Column(nullable = false)
-//	private LocalDateTime lastModifiedDateTime;
-//
-//	@PrePersist
-//	private void beforePersist() {
-//		createdDateTime = LocalDateTime.now();
-//		lastModifiedDateTime = LocalDateTime.now();
-//	}
-//
-//	@PreUpdate
-//	private void beforeUpdate() {
-//		lastModifiedDateTime = LocalDateTime.now();
-//	}
+    @Version
+    private Integer version;
+
+    @Column(nullable = false)
+    private LocalDateTime createdDateTime;
+
+    @Column(nullable = false)
+    private LocalDateTime lastModifiedDateTime;
+
+    @PrePersist
+    private void beforePersist() {
+        createdDateTime = LocalDateTime.now();
+        lastModifiedDateTime = createdDateTime;
+    }
+
+    @PreUpdate
+    private void beforeUpdate() {
+        lastModifiedDateTime = LocalDateTime.now();
+    }
+
 }
