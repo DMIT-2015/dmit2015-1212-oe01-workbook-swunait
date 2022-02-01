@@ -3,6 +3,7 @@ package ca.nait.dmit.dmit20151212oe01jpademo.repository;
 import ca.nait.dmit.dmit20151212oe01jpademo.entity.Movie;
 import common.config.ApplicationConfig;
 
+import jakarta.validation.ConstraintViolationException;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -54,6 +55,25 @@ public class MovieRepositoryIT {
                 .addAsWebInfResource(EmptyAsset.INSTANCE,"beans.xml");
     }
 
+    @Order(6)
+    @Test
+    void shouldCreateFail() {
+        Movie movie1 = new Movie();
+//        movie1.setId(123L);
+        movie1.setTitle("");
+        movie1.setReleaseDate(LocalDate.parse("2022-01-31"));
+        movie1.setGenre("");
+        movie1.setPrice(BigDecimal.valueOf(99.99));
+        movie1.setRating("G");
+        Exception exception = assertThrows(ConstraintViolationException.class, () -> {
+            _movieRepository.add(movie1);
+        });
+//        assertEquals("The Title field is required", exception.getMessage());
+        assertTrue(exception.getMessage().contains("The Title field is required"));
+        assertTrue(exception.getMessage().contains("The field Genre is required"));
+
+    }
+
     @Order(2)
     @Test
     void shouldCreate() {
@@ -98,6 +118,23 @@ public class MovieRepositoryIT {
     @Order(1)
     @Test
     void shouldFindAll() {
+
+//        var movie1 = new Movie();
+//        movie1.setGenre("Genre1");
+//        movie1.setPrice(BigDecimal.valueOf(99.99));
+//        movie1.setRating("NC-17");
+//        movie1.setTitle("Title1");
+//        movie1.setReleaseDate(LocalDate.parse("2022-01-31"));
+//        _movieRepository.add(movie1);
+//
+//        var movie2 = new Movie();
+//        movie2.setGenre("Genre2");
+//        movie2.setPrice(BigDecimal.valueOf(88.88));
+//        movie2.setRating("NC-17");
+//        movie2.setTitle("Title2");
+//        movie2.setReleaseDate(LocalDate.parse("2022-01-31"));
+//        _movieRepository.add(movie2);
+
         List<Movie> queryResultList = _movieRepository.findAll();
         assertEquals(4, queryResultList.size());
 
@@ -115,8 +152,8 @@ public class MovieRepositoryIT {
         assertEquals(7.99, lastMovie.getPrice().doubleValue());
         assertEquals("PG-13", lastMovie.getRating());
         assertEquals(LocalDate.parse("1959-04-15", formatter).toString(), lastMovie.getReleaseDate().toString());
-
-        queryResultList.forEach(System.out::println);
+//
+//        queryResultList.forEach(System.out::println);
     }
 
     @Order(4)

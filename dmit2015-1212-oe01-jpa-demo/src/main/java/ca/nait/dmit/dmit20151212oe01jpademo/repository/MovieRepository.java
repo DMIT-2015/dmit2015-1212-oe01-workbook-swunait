@@ -17,6 +17,7 @@ public class MovieRepository {
     private EntityManager em;
 
     public void add(Movie newMovie) {
+//        newMovie.setId();
         em.persist(newMovie);
     }
 
