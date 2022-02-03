@@ -1,0 +1,11 @@
+### Get HelloWorld message in text format
+GET http://localhost:8080/dmit2015-1212-jaxrs-demo/webapi/helloworld
+Accept: text/plain
+
+### Get HelloWorld message in HTML format
+GET http://localhost:8080/dmit2015-1212-jaxrs-demo/webapi/helloworld
+Accept: text/html
+
+### Get HelloWorld message in HTML format
+GET http://localhost:8080/dmit2015-1212-jaxrs-demo/webapi/helloworld
+Accept: application/json

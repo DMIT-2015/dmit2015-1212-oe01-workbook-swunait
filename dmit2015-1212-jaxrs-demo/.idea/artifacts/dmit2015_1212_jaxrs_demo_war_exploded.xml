@@ -1,0 +1,55 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="dmit2015-1212-jaxrs-demo:war exploded">
+    <output-path>$PROJECT_DIR$/target/dmit2015-1212-jaxrs-demo</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>dmit2015-1212-jaxrs-demo</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="dmit2015-1212-jaxrs-demo" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.glassfish.jaxb:jaxb-runtime:3.0.2" />
+          <element id="library" level="project" name="Maven: com.sun.activation:jakarta.activation:2.0.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.jaxb:jaxb-core:3.0.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.jaxb:txw2:3.0.2" />
+          <element id="library" level="project" name="Maven: com.sun.istack:istack-commons-runtime:4.0.1" />
+          <element id="library" level="project" name="Maven: org.hibernate.validator:hibernate-validator:7.0.2.Final" />
+          <element id="library" level="project" name="Maven: jakarta.validation:jakarta.validation-api:3.0.0" />
+          <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.4.1.Final" />
+          <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.5.1" />
+          <element id="library" level="project" name="Maven: org.hibernate.orm:hibernate-core:6.0.0.CR1" />
+          <element id="library" level="project" name="Maven: jakarta.persistence:jakarta.persistence-api:3.0.0" />
+          <element id="library" level="project" name="Maven: jakarta.transaction:jakarta.transaction-api:2.0.0" />
+          <element id="library" level="project" name="Maven: org.jboss:jandex:2.4.2.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:6.0.0.CR1" />
+          <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy:1.12.7" />
+          <element id="library" level="project" name="Maven: jakarta.activation:jakarta.activation-api:2.0.1" />
+          <element id="library" level="project" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:3.0.1" />
+          <element id="library" level="project" name="Maven: jakarta.inject:jakarta.inject-api:2.0.0" />
+          <element id="library" level="project" name="Maven: org.antlr:antlr4-runtime:4.9.1" />
+          <element id="library" level="project" name="Maven: com.h2database:h2:2.1.210" />
+          <element id="library" level="project" name="Maven: org.hsqldb:hsqldb:2.6.1" />
+          <element id="library" level="project" name="Maven: com.microsoft.sqlserver:mssql-jdbc:9.4.1.jre11" />
+          <element id="library" level="project" name="Maven: com.oracle.database.jdbc:ojdbc11:21.4.0.0.1" />
+          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.3.1" />
+          <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.5.0" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.28" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
+          <element id="library" level="project" name="Maven: org.mariadb.jdbc:mariadb-java-client:2.7.5" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-simple:1.7.33" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.33" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/dmit2015-1212-jaxrs-demo/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="dmit2015-1212-jaxrs-demo/web/Web" />
+    </root>
+  </artifact>
+</component>
