@@ -1,9 +1,11 @@
 package dmit2015.resource;
 
+import common.validator.BeanValidator;
 import dmit2015.entity.TodoItem;
 import dmit2015.repository.TodoItemRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.persistence.OptimisticLockException;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
@@ -66,11 +68,20 @@ public class TodoItemResource {
     private TodoItemRepository todoItemRepository;
 
     @POST   // POST: /webapi/TodoItems
-    public Response postTodoItem(@Valid TodoItem newTodoItem) {
+    public Response postTodoItem(TodoItem newTodoItem) {
         if (newTodoItem == null) {
             throw new BadRequestException();
         }
-        todoItemRepository.add(newTodoItem);
+
+        String errorMessage = BeanValidator.validateBean(TodoItem.class, newTodoItem);
+        if (errorMessage != null) {
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity(errorMessage)
+                    .build();
+        }
+
+        todoItemRepository.create(newTodoItem);
         URI todoItemsUri = uriInfo.getAbsolutePathBuilder().path(newTodoItem.getId().toString()).build();
         return Response.created(todoItemsUri).build();
     }
@@ -78,7 +89,7 @@ public class TodoItemResource {
     @GET    // GET: /webapi/TodoItems/5
     @Path("{id}")
     public Response getTodoItem(@PathParam("id") Long id) {
-        Optional<TodoItem> optionalTodoItem = todoItemRepository.findById(id);
+        Optional<TodoItem> optionalTodoItem = todoItemRepository.findOptional(id);
 
         if (optionalTodoItem.isEmpty()) {
             throw new NotFoundException();
@@ -90,36 +101,69 @@ public class TodoItemResource {
 
     @GET    // GET: /webapi/TodoItems
     public Response getTodoItems() {
-        return Response.ok(todoItemRepository.findAll()).build();
+        return Response.ok(todoItemRepository.list()).build();
     }
 
     @PUT    // PUT: /webapi/TodoItems/5
     @Path("{id}")
-    public Response updateTodoItem(@PathParam("id") Long id, @Valid TodoItem updatedTodoItem) {
+    public Response updateTodoItem(@PathParam("id") Long id, TodoItem updatedTodoItem) {
         if (!id.equals(updatedTodoItem.getId())) {
             throw new BadRequestException();
         }
 
-        Optional<TodoItem> optionalTodoItem = todoItemRepository.findById(id);
-
-        if (optionalTodoItem.isEmpty()) {
-            throw new NotFoundException();
+        String errorMessage = BeanValidator.validateBean(TodoItem.class, updatedTodoItem);
+        if (errorMessage != null) {
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity(errorMessage)
+                    .build();
         }
-        todoItemRepository.update(updatedTodoItem);
 
-        return Response.ok(updatedTodoItem).build();
+//        Optional<TodoItem> optionalTodoItem = todoItemRepository.findOptional(id);
+//        if (optionalTodoItem.isEmpty()) {
+//            throw new NotFoundException();
+//        }
+//        TodoItem existingTodoItem = optionalTodoItem.get();
+        TodoItem existingTodoItem = todoItemRepository
+                .findOptional(id)
+                .orElseThrow(NotFoundException::new);
+
+        // Copy data from the updated entity to the existing entity
+        existingTodoItem.setVersion(updatedTodoItem.getVersion());
+        existingTodoItem.setName(updatedTodoItem.getName());
+        existingTodoItem.setComplete(updatedTodoItem.isComplete());
+
+        try {
+            todoItemRepository.update(existingTodoItem);
+        } catch (OptimisticLockException ex) {
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity("You are updating an old version of the data. Please fetch new version.")
+                    .build();
+        } catch (Exception ex) {
+            return Response
+                    .serverError()
+                    .entity(ex.getMessage())
+                    .build();
+        }
+
+        return Response.ok(existingTodoItem).build();
     }
 
     @DELETE // DELETE: /webapi/TodoItems/5
     @Path("{id}")
     public Response deleteTodoItem(@PathParam("id") Long id) {
-        Optional<TodoItem> optionalTodoItem = todoItemRepository.findById(id);
+//        Optional<TodoItem> optionalTodoItem = todoItemRepository.findOptional(id);
+//
+//        if (optionalTodoItem.isEmpty()) {
+//            throw new NotFoundException();
+//        }
+//        todoItemRepository.delete(id);
 
-        if (optionalTodoItem.isEmpty()) {
-            throw new NotFoundException();
-        }
-
-        todoItemRepository.remove(id);
+        TodoItem existingTodoItem = todoItemRepository
+                .findOptional(id)
+                .orElseThrow(NotFoundException::new);
+        todoItemRepository.remove(existingTodoItem);
 
         return Response.noContent().build();
     }

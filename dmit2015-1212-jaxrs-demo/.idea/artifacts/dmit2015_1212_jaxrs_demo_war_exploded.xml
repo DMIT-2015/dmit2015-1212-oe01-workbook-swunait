@@ -33,7 +33,7 @@
           <element id="library" level="project" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:3.0.1" />
           <element id="library" level="project" name="Maven: jakarta.inject:jakarta.inject-api:2.0.0" />
           <element id="library" level="project" name="Maven: org.antlr:antlr4-runtime:4.9.1" />
-          <element id="library" level="project" name="Maven: com.h2database:h2:2.1.210" />
+          <element id="library" level="project" name="Maven: com.h2database:h2:1.4.200" />
           <element id="library" level="project" name="Maven: org.hsqldb:hsqldb:2.6.1" />
           <element id="library" level="project" name="Maven: com.microsoft.sqlserver:mssql-jdbc:9.4.1.jre11" />
           <element id="library" level="project" name="Maven: com.oracle.database.jdbc:ojdbc11:21.4.0.0.1" />

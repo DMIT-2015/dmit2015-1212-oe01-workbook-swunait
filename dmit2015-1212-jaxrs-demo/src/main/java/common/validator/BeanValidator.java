@@ -9,13 +9,13 @@ import jakarta.validation.Validation;
  * <p>
  * The following example shows to validate a Region object named newRegion.
  * <p>
- * String errorMessage = BeanValidator.validateBean(Region.class, newRegion);
- * if (errorMessage != null) {
- * return Response
- * .status(Response.Status.BAD_REQUEST)
- * .entity(errorMessage)
- * .build();
- * }
+ String errorMessage = BeanValidator.validateBean(Region.class, newRegion);
+ if (errorMessage != null) {
+    return Response
+        .status(Response.Status.BAD_REQUEST)
+        .entity(errorMessage)
+        .build();
+ }
  *
  * @version 2022.02.06
  */
