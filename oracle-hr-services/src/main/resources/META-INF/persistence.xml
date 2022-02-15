@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+
+    <persistence-unit name="oracle-jpa-hr-pu" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>java:app/datasources/oracleHrDS</jta-data-source>
+        <class>dmit2015.entity.RegionsEntity</class>
+        <class>dmit2015.entity.CountriesEntity</class>
+        <class>dmit2015.entity.DepartmentsEntity</class>
+        <class>dmit2015.entity.EmployeesEntity</class>
+        <class>dmit2015.entity.JobsEntity</class>
+        <class>dmit2015.entity.JobHistoryEntity</class>
+        <class>dmit2015.entity.LocationsEntity</class>
+        <class>dmit2015.entity.EmpDetailsViewEntity</class>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect"/>
+            <property name="jakarta.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521/xepdb1" />
+            <property name="jakarta.persistence.jdbc.user" value="HR" />
+            <property name="jakarta.persistence.jdbc.password" value="Password2015" />
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@//localhost:1521/XEPDB1"/>
+            <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
+
+        </properties>
+    </persistence-unit>
+
+
+</persistence>
+

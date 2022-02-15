@@ -16,6 +16,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
+          <factory-entry name="h2database-jpa-pu" />
           <factory-entry name="hsqldatabase-jpa-pu" />
         </datasource-mapping>
         <naming-strategy-map />

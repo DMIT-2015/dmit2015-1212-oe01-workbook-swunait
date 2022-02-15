@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="oracle-hr-services:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>oracle-hr-services</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="oracle-hr-services-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="oracle-hr-services:war exploded" />
+    </root>
+  </artifact>
+</component>

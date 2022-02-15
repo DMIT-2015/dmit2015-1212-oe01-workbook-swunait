@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class TodoItemResource2RestAssuredIT {
+class TodoItemResourceRestAssuredIT {
 
     String todoResourceUrl = "http://localhost:8080/dmit2015-1212-jaxrs-demo/webapi/TodoItems";
     String testDataResourceLocation;
