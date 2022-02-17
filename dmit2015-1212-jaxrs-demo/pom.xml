@@ -24,11 +24,11 @@
             <version>9.1.0</version>
             <scope>provided</scope>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.hibernate</groupId>-->
-        <!--            <artifactId>hibernate-core-jakarta</artifactId>-->
-        <!--            <version>5.6.1.Final</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core-jakarta</artifactId>
+            <version>5.6.5.Final</version>
+        </dependency>
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
@@ -65,13 +65,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- For IntelliJ IDEA for resolve org.hibernate.jpa.HibernatePersistenceProvider -->
-        <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>6.0.0.CR1</version>
-        </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -87,19 +80,19 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>9.4.1.jre11</version>
+            <version>10.2.0.jre17</version>
         </dependency>
 
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ojdbc11</artifactId>
-            <version>21.4.0.0.1</version>
+            <version>21.5.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.3.1</version>
+            <version>42.3.2</version>
         </dependency>
 
         <dependency>
@@ -154,7 +147,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.33</version>
+            <version>1.7.35</version>
         </dependency>
 
         <dependency>

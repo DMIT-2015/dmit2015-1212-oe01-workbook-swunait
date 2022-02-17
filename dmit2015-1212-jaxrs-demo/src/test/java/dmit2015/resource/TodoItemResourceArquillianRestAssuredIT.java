@@ -43,7 +43,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(ArquillianExtension.class)                  // Run with JUnit 5 instead of JUnit 4
 public class TodoItemResourceArquillianRestAssuredIT {
 
-    static String mavenArtifactIdId;
+    static String mavenProjectName;
     static String resourceUrl;
     static final String todoItemResourcePath = "webapi/TodoItems";
 
@@ -52,12 +52,12 @@ public class TodoItemResourceArquillianRestAssuredIT {
         PomEquippedResolveStage pomFile = Maven.resolver().loadPomFromFile("pom.xml");
         MavenXpp3Reader reader = new MavenXpp3Reader();
         Model model = reader.read(new FileReader("pom.xml"));
-        mavenArtifactIdId = model.getArtifactId();
-        resourceUrl = String.format("http://localhost:8080/%s/%s", mavenArtifactIdId, todoItemResourcePath);
-        final String archiveName = model.getArtifactId() + ".war";
+        mavenProjectName = model.getName();
+        resourceUrl = String.format("http://localhost:8080/%s/%s", mavenProjectName, todoItemResourcePath);
+        final String archiveName = model.getName() + ".war";
         return ShrinkWrap.create(WebArchive.class,archiveName)
                 .addAsLibraries(pomFile.resolve("com.h2database:h2:1.4.200").withTransitivity().asFile())
-//                .addAsLibraries(pomFile.resolve("org.hsqldb:hsqldb:2.6.1").withTransitivity().asFile())
+                .addAsLibraries(pomFile.resolve("org.hsqldb:hsqldb:2.6.1").withTransitivity().asFile())
 //                .addAsLibraries(pomFile.resolve("com.microsoft.sqlserver:mssql-jdbc:10.2.0.jre17").withTransitivity().asFile())
 //                .addAsLibraries(pomFile.resolve("com.oracle.database.jdbc:ojdbc11:21.5.0.0").withTransitivity().asFile())
                 .addClasses(ApplicationConfig.class, JAXRSConfiguration.class)
@@ -176,7 +176,7 @@ public class TodoItemResourceArquillianRestAssuredIT {
         TodoItem existingTodoItem = jsonb.fromJson(jsonBody, TodoItem.class);
 
         assertNotNull(existingTodoItem);
-        existingTodoItem.setName("Updated Name");
+        existingTodoItem.setName("REST Assured updated data");
         existingTodoItem.setComplete(true);
 
         String jsonRequestBody = jsonb.toJson(existingTodoItem);
@@ -187,6 +187,32 @@ public class TodoItemResourceArquillianRestAssuredIT {
                 .put(testDataResourceLocation)
                 .then()
                 .statusCode(200);
+
+        // Verify that record has been updated
+        String responseData = given()
+                .accept(ContentType.JSON)
+                .when()
+                .get(testDataResourceLocation)
+                .asString();
+        // Convert the JSON string to a TodoItem object
+        TodoItem updatedTodoItem = jsonb.fromJson(responseData, TodoItem.class);
+        // Verify the value of the id has not changed and the name and complete property values has changed
+        assertEquals(existingTodoItem.getId(), updatedTodoItem.getId());
+        assertEquals("REST Assured updated data", updatedTodoItem.getName());
+        assertEquals(true, updatedTodoItem.isComplete());
+
+        // Try updating the same resource again and it should now return a status of 400
+        // since we are no longer updating the resource using the latest version of the data
+        existingTodoItem.setName("Updated name again should fail");
+        existingTodoItem.setComplete(false);
+        jsonRequestBody = jsonb.toJson(existingTodoItem);
+        given()
+                .contentType(ContentType.JSON)
+                .body(jsonRequestBody)
+                .when()
+                .put(testDataResourceLocation)
+                .then()
+                .statusCode(400);
     }
 
     @Order(5)

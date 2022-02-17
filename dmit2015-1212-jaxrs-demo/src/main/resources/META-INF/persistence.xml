@@ -4,31 +4,32 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
 
-      <persistence-unit name="h2database-jpa-pu" transaction-type="JTA">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>java:app/datasources/h2databaseDS</jta-data-source>
-
-        <properties>
-          <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-          <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
-          <property name="jakarta.persistence.sql-load-script-source" value="META-INF/sql/import-data.sql" />
-        </properties>
-
-      </persistence-unit>
-
-
-<!--    <persistence-unit name="hsqldatabase-jpa-pu" transaction-type="JTA">-->
-<!--        <jta-data-source>java:app/datasources/hsqldatabaseDS</jta-data-source>-->
+<!--      <persistence-unit name="h2database-jpa-pu" transaction-type="JTA">-->
+<!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+<!--        <jta-data-source>java:app/datasources/h2databaseDS</jta-data-source>-->
 
 <!--        <properties>-->
-<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>-->
-
+<!--          <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>-->
 <!--            &lt;!&ndash; database.action: drop-and-create, create, update, none &ndash;&gt;-->
-<!--            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>-->
-<!--            <property name="javax.persistence.sql-load-script-source" value="META-INF/sql/import-data.sql" />-->
-
+<!--            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>-->
+<!--          <property name="jakarta.persistence.sql-load-script-source" value="META-INF/sql/import-data.sql" />-->
 <!--        </properties>-->
-<!--    </persistence-unit>-->
+
+<!--      </persistence-unit>-->
+
+
+    <persistence-unit name="hsqldatabase-jpa-pu" transaction-type="JTA">
+        <jta-data-source>java:app/datasources/hsqldatabaseDS</jta-data-source>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
+
+            <!-- hbm2ddl.auto: none, create-only, drop, create, create-drop, validate, update -->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.hbm2ddl.import_files" value="META-INF/sql/import-data.sql" />
+
+        </properties>
+    </persistence-unit>
 
 </persistence>
 
