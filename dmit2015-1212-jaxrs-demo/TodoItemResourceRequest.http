@@ -40,5 +40,5 @@ Content-Type: application/json
 DELETE http://localhost:8080/dmit2015-1212-jaxrs-demo/webapi/TodoItems/2
 
 ### Delete an TodoItem with an id of 4
-DELETE http://localhost:8080/dmit2015-1212-jaxrs-demo/webapi/TodoItems/4
+DELETE http://localhost:8080/dmit2015-1212-jaxrs-demo/webapi/TodoItems/6
 

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="dmit2015-1212-batch-demo:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>dmit2015-1212-batch-demo</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="dmit2015-1212-batch-demo.war">
+      <element id="artifact" artifact-name="dmit2015-1212-batch-demo:war exploded" />
+    </root>
+  </artifact>
+</component>
