@@ -1,15 +1,15 @@
 <job id="myJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
-<!--    <step id="downloadFileStep" next="importCsvData">-->
-<!--        <batchlet ref="downloadManager">-->
-<!--            <properties>-->
-<!--                <property name="file_download_path"-->
-<!--                          value="/home/user2015/Downloads" />-->
-<!--                <property name="csv_file_uri"-->
-<!--                          value="https://data.edmonton.ca/api/views/akzz-54k3/rows.csv?accessType=DOWNLOAD"/>-->
-<!--            </properties>-->
+    <step id="downloadFileStep" next="importCsvData">
+        <batchlet ref="downloadManager">
+            <properties>
+                <property name="file_download_path"
+                          value="/home/user2015/Downloads" />
+                <property name="csv_file_uri"
+                          value="https://data.edmonton.ca/api/views/akzz-54k3/rows.csv?accessType=DOWNLOAD"/>
+            </properties>
 
-<!--        </batchlet>-->
-<!--    </step>-->
+        </batchlet>
+    </step>
 
     <step id="importCsvData">
         <chunk item-count="50">
@@ -18,7 +18,7 @@
                     <property name="input_file" 
                               value="/home/user2015/Downloads/Scheduled_Photo_Enforcement_Zone_Centre_Points.csv"/>
                     <property name="max_results"
-                              value="99" />
+                              value="0" />
                 </properties>
             </reader>
             <processor ref="edmontonZoneCentreItemProcessor" />

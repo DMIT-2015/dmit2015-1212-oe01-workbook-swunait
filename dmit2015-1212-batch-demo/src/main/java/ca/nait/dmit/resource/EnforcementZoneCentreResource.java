@@ -5,7 +5,7 @@ import ca.nait.dmit.repository.EnforcementZoneCentreRepository;
 import common.validator.BeanValidator;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.validation.Valid;
+import jakarta.persistence.OptimisticLockException;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
@@ -78,12 +78,10 @@ public class EnforcementZoneCentreResource {
 
     @PUT            // This method only accepts HTTP PUT requests.
     @Path("{id}")    // This method accepts a path parameter and gives it a name of id
-    public Response updateEnforcementZoneCentre(@PathParam("id") Short enforcementZoneCentreId, EnforcementZoneCentre updatedEnforcementZoneCentre) {
-        if (!enforcementZoneCentreId.equals(updatedEnforcementZoneCentre.getSiteId())) {
+    public Response updateEnforcementZoneCentre(@PathParam("id") Short id, EnforcementZoneCentre updatedEnforcementZoneCentre) {
+        if (!id.equals(updatedEnforcementZoneCentre.getSiteId())) {
             throw new BadRequestException();
         }
-
-        _enforcementZoneCentreRepository.findOptional(enforcementZoneCentreId).orElseThrow(NotFoundException::new);
 
         String errorMessage = BeanValidator.validateBean(EnforcementZoneCentre.class, updatedEnforcementZoneCentre);
         if (errorMessage != null) {
@@ -93,8 +91,24 @@ public class EnforcementZoneCentreResource {
                     .build();
         }
 
+        EnforcementZoneCentre existingEnforcementZoneCentre = _enforcementZoneCentreRepository
+                .findOptional(id)
+                .orElseThrow(NotFoundException::new);
+//        // TODO: copy properties from the updated entity to the existing entity such as copy the version property shown below
+//        existingEnforcementZoneCentre.setVersion(updatedEnforcementZoneCentre.getVersion());
+        existingEnforcementZoneCentre.setLatitude(updatedEnforcementZoneCentre.getLatitude());
+        existingEnforcementZoneCentre.setLongitude(updatedEnforcementZoneCentre.getLongitude());
+        existingEnforcementZoneCentre.setSpeedLimit(updatedEnforcementZoneCentre.getSpeedLimit());
+        existingEnforcementZoneCentre.setLocationDescription(updatedEnforcementZoneCentre.getLocationDescription());
+        existingEnforcementZoneCentre.setReasonCodes(updatedEnforcementZoneCentre.getReasonCodes());
+
         try {
-            _enforcementZoneCentreRepository.update(updatedEnforcementZoneCentre);
+            _enforcementZoneCentreRepository.update(existingEnforcementZoneCentre);
+        } catch (OptimisticLockException ex) {
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity("The data you are trying to update has changed since your last read request.")
+                    .build();
         } catch (Exception ex) {
             // Return an HTTP status of "500 Internal Server Error" containing the exception message
             return Response.
@@ -103,8 +117,8 @@ public class EnforcementZoneCentreResource {
                     .build();
         }
 
-        // Returns an HTTP status "204 No Content" if the EnforcementZoneCentre was successfully persisted
-        return Response.noContent().build();
+        // Returns an HTTP status "200 OK" and include in the body of the response the object that was updated
+        return Response.ok(existingEnforcementZoneCentre).build();
     }
 
     @DELETE            // This method only accepts HTTP DELETE requests.
