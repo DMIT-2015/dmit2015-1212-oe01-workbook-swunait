@@ -1,5 +1,13 @@
-<job id="myJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+<job id="enforcementZoneCentre" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+
+    <listeners>
+        <listener ref="enforcementZoneCentreJobListener"></listener>
+    </listeners>
+
     <step id="downloadFileStep" next="importCsvData">
+        <listeners>
+            <listener ref="enforcementZoneCentreStepListener"></listener>
+        </listeners>
         <batchlet ref="downloadManager">
             <properties>
                 <property name="file_download_path"
@@ -12,6 +20,10 @@
     </step>
 
     <step id="importCsvData">
+        <listeners>
+            <listener ref="enforcementZoneCentreStepListener"></listener>
+            <listener ref="enforcementZoneCentreChunkListener"></listener>
+        </listeners>
         <chunk item-count="50">
             <reader ref="edmontonZoneCentreItemReader">
                 <properties>
