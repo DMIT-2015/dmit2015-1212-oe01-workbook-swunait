@@ -1,0 +1,15 @@
+### GET hello-world resource
+GET http://localhost:8080/webapi/hello-world
+
+
+### Send an email
+POST http://localhost:8080/webapi/mail
+Content-Type: application/json
+
+{
+  "mailToAddresses": "yourname@youremail.com",
+  "mailSubject": "DMIT2015 WildFly mail subsystem on March 11, 2022",
+  "mailText": "This email is not spam. It was sent using the Wildfly mail subsystem and a stateless session bean."
+}
+
+

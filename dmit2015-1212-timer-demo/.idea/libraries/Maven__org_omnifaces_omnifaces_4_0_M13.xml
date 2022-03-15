@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.omnifaces:omnifaces:4.0-M13">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/omnifaces/omnifaces/4.0-M13/omnifaces-4.0-M13.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/omnifaces/omnifaces/4.0-M13/omnifaces-4.0-M13-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/omnifaces/omnifaces/4.0-M13/omnifaces-4.0-M13-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
