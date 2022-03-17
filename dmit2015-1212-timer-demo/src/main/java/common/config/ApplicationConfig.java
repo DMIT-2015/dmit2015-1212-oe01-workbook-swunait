@@ -3,6 +3,7 @@ package common.config;
 import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.annotation.sql.DataSourceDefinitions;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.faces.annotation.FacesConfig;
 
 @DataSourceDefinitions({
 
@@ -15,6 +16,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 })
 
+@FacesConfig
 @ApplicationScoped
 public class ApplicationConfig {
 

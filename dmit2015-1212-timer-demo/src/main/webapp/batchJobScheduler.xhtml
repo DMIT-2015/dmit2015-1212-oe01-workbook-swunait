@@ -1,0 +1,64 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Batch Job Scheduler"/>
+
+    <ui:define name="maincontent">
+
+        <h1>Batch Job Scheduler</h1>
+
+        <p:messages id="messages" />
+
+        <div class="card">
+            <h:form id="form1">
+
+                <div class="field">
+                    <label for="batchJobXmlFilename">Batch Job XML Filename (without .xml file extension)</label>
+                    <p:inputText
+                            id="batchJobXmlFilename"
+                            type="text"
+                            class="inputfield w-full"
+                            value="#{currentBatchJobSchedulerController.batchJobXmlFilename}"
+                    />
+                </div>
+
+                <!-- https://javaee.github.io/tutorial/jsf-page-core001.html -->
+                <!-- https://docs.oracle.com/javase/tutorial/i18n/format/simpleDateFormat.html -->
+                <div class="field">
+                    <label for="scheduledDateTIme">Schedule Date Time</label>
+                    <p:datePicker
+                            id="scheduledDateTIme"
+                            value="#{currentBatchJobSchedulerController.scheduledDateTIme}"
+                            pattern="yyyy-MM-dd H:mm"
+                            showButtonBar="true"
+                    >
+                        <f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd H:mm"/>
+                    </p:datePicker>
+                </div>
+
+                <p:commandButton
+                        icon="pi pi-save"
+                        value="Schedule Batch Job"
+                        action="#{currentBatchJobSchedulerController.scheduleBatchJob()}"
+                        update=":messages @form"
+                />
+
+            </h:form>
+
+        </div>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,75 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="EnforcementZoneCentre - List"/>
+
+    <ui:define name="maincontent">
+
+        <h1>EnforcementZoneCentre List</h1>
+
+        <p:messages id="messages"/>
+
+        <h:form>
+
+            <p:commandButton value="Create New"
+                             action="create"
+                             icon="pi pi-database"
+            >
+            </p:commandButton>
+
+            <p:dataTable id="entityTable"
+                         value="#{currentEnforcementZoneCentreListController.enforcementzonecentreList}"
+                         var="currentItem">
+
+                <p:column headerText="Site ID">
+                    <h:outputText value="#{currentItem.siteId}"/>
+                </p:column>
+
+                <!-- TODO: add p:column for the properties of the entity to display -->
+                <p:column headerText="Location">
+                    <h:outputText value="#{currentItem.locationDescription}"/>
+                </p:column>
+
+                <p:column headerText="Speed Limit">
+                    <h:outputText value="#{currentItem.speedLimit}"/>
+                </p:column>
+
+<f:verbatim>
+                <p:column headerText="Action">
+                    <p:link id="editLink" outcome="edit" value="edit">
+                        <f:param name="editId" value="#{currentItem.id}"/>
+                    </p:link>
+
+                    |
+
+                    <p:link id="detailsLink" outcome="details" value="details">
+                        <f:param name="editId" value="#{currentItem.id}"/>
+                    </p:link>
+
+                    |
+
+                    <p:link id="deleteLink" outcome="delete" value="delete">
+                        <f:param name="editId" value="#{currentItem.id}"/>
+                    </p:link>
+                </p:column>
+</f:verbatim>
+
+            </p:dataTable>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
