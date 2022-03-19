@@ -46,25 +46,23 @@
                     <h:outputText value="#{currentItem.speedLimit}"/>
                 </p:column>
 
-<f:verbatim>
                 <p:column headerText="Action">
                     <p:link id="editLink" outcome="edit" value="edit">
-                        <f:param name="editId" value="#{currentItem.id}"/>
+                        <f:param name="editId" value="#{currentItem.siteId}"/>
                     </p:link>
 
                     |
 
                     <p:link id="detailsLink" outcome="details" value="details">
-                        <f:param name="editId" value="#{currentItem.id}"/>
+                        <f:param name="editId" value="#{currentItem.siteId}"/>
                     </p:link>
 
                     |
 
                     <p:link id="deleteLink" outcome="delete" value="delete">
-                        <f:param name="editId" value="#{currentItem.id}"/>
+                        <f:param name="editId" value="#{currentItem.siteId}"/>
                     </p:link>
                 </p:column>
-</f:verbatim>
 
             </p:dataTable>
 

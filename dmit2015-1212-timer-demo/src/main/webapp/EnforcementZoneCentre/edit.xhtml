@@ -1,0 +1,102 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Edit EnforcementZoneCentre"/>
+
+    <ui:define name="maincontent">
+
+        <h1>Edit EnforcementZoneCentre</h1>
+
+        <p:messages id="messages"/>
+
+        <h:form>
+
+            <p:panel header="EnforcementZoneCentre Details">
+
+                <div class="field">
+                    <label for="entityId">ID</label>
+                    <p:inputText id="entityId"
+                                 label="EnforcementZoneCentre ID"
+                                 value="#{currentEnforcementZoneCentreEditController.editId}"
+                                 class="inputfield w-full"
+                                 readonly="true">
+                    </p:inputText>
+                </div>
+
+                <div class="field">
+                    <label for="locationDescription">Location Description</label>
+                    <p:inputText
+                            id="locationDescription"
+                            type="text"
+                            class="inputfield w-full"
+                            value="#{currentEnforcementZoneCentreEditController.existingEnforcementZoneCentre.locationDescription}">
+                    </p:inputText>
+                </div>
+
+                <div class="field">
+                    <label for="speedLimit">Speed Limit</label>
+                    <p:inputText
+                            id="speedLimit"
+                            type="number"
+                            class="inputfield w-full"
+                            value="#{currentEnforcementZoneCentreEditController.existingEnforcementZoneCentre.speedLimit}">
+                    </p:inputText>
+                </div>
+
+                <div class="field">
+                    <label for="reasonCodes">Reason Code</label>
+                    <p:inputText
+                            id="reasonCodes"
+                            type="text"
+                            class="inputfield w-full"
+                            value="#{currentEnforcementZoneCentreEditController.existingEnforcementZoneCentre.reasonCodes}">
+                    </p:inputText>
+                </div>
+
+                <div class="field">
+                    <label for="longitude">Longitude</label>
+                    <p:inputText
+                            id="longitude"
+                            type="text"
+                            class="inputfield w-full"
+                            value="#{currentEnforcementZoneCentreEditController.existingEnforcementZoneCentre.longitude}">
+                    </p:inputText>
+                </div>
+
+                <div class="field">
+                    <label for="latitude">Latitude</label>
+                    <p:inputText
+                            id="latitude"
+                            type="text"
+                            class="inputfield w-full"
+                            value="#{currentEnforcementZoneCentreEditController.existingEnforcementZoneCentre.latitude}">
+                    </p:inputText>
+                </div>
+
+            </p:panel>
+
+            <p:commandButton value="Save"
+                             icon="pi pi-save"
+                             action="#{currentEnforcementZoneCentreEditController.onSave()}"
+                             update=":messages @form"/>
+            |
+            <p:link id="backToListLink" outcome="index" value="Back to List">
+            </p:link>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
