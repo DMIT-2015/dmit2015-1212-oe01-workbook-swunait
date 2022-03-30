@@ -1,0 +1,90 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Movie Details"/>
+
+    <ui:define name="maincontent">
+
+        <p:panel header="Movie Details">
+            <p:panelGrid columns="2">
+                <h:panelGroup>
+                    <strong><h:outputText value="ID"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentMovieDetailsController.editId}"/>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Title"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentMovieDetailsController.existingMovie.title}"/>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Release Date"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentMovieDetailsController.existingMovie.releaseDate}">
+                    <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+                </h:outputText>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Price"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentMovieDetailsController.existingMovie.price}">
+                    <f:convertNumber type="currency" />
+                </h:outputText>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Genre"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentMovieDetailsController.existingMovie.genre}">
+                </h:outputText>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Rating"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentMovieDetailsController.existingMovie.rating}">
+                </h:outputText>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Version"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentMovieDetailsController.existingMovie.version}">
+                </h:outputText>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Created"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentMovieDetailsController.existingMovie.createdDateTime}">
+                    <f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd h:mm:ss a" />
+                </h:outputText>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Last Modified"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentMovieDetailsController.existingMovie.lastModifiedDateTime}">
+                    <f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd HH:mm:ss" />
+                </h:outputText>
+
+            </p:panelGrid>
+
+        </p:panel>
+
+        <p:link id="editLink" outcome="edit" icon="pi pi-user-edit" value="edit">
+            <f:param name="editId" value="#{currentMovieDetailsController.editId}"/>
+        </p:link>
+        |
+        <p:link id="backToListLink" outcome="index" value="Back to List">
+        </p:link>
+    </ui:define>
+
+</ui:composition>
