@@ -17,7 +17,7 @@
 
     <ui:define name="maincontent">
 
-        <h1>Movie List</h1>
+        <h1>#{bundle['view.movies']}</h1>
 
         <p:messages id="messages"/>
 
@@ -40,48 +40,48 @@
                 </p:column>
 
                 <!-- TODO: add p:column for the properties of the entity to display -->
-                <p:column headerText="Title">
+                <p:column headerText="#{bundle['title']}">
                     <h:outputText value="#{currentItem.value.title}"/>
                 </p:column>
 
-                <p:column headerText="Release Date">
+                <p:column headerText="#{bundle['release.date']}">
                     <h:outputText value="#{currentItem.value.releaseDate}"/>
                 </p:column>
 
-                <p:column headerText="Genre">
+                <p:column headerText="#{bundle['genre']}">
                     <h:outputText value="#{currentItem.value.genre}"/>
                 </p:column>
 
-                <p:column headerText="Rating">
+                <p:column headerText="#{bundle['rating']}">
                     <h:outputText value="#{currentItem.value.rating}"/>
                 </p:column>
 
-                <p:column headerText="Price">
+                <p:column headerText="#{bundle['price']}">
                     <h:outputText value="#{currentItem.value.price}">
                         <f:convertNumber type="currency" />
                     </h:outputText>
                 </p:column>
 
-                <f:verbatim>
                 <p:column headerText="Action">
                     <p:link id="editLink" outcome="edit" value="edit">
-                        <f:param name="editId" value="#{currentItem.id}"/>
+                        <f:param name="editId" value="#{currentItem.key}"/>
                     </p:link>
+                    <f:verbatim>
 
                     |
 
                     <p:link id="detailsLink" outcome="details" value="details">
-                        <f:param name="editId" value="#{currentItem.id}"/>
+                        <f:param name="editId" value="#{currentItem.key}"/>
                     </p:link>
 
                     |
 
                     <p:link id="deleteLink" outcome="delete" value="delete">
-                        <f:param name="editId" value="#{currentItem.id}"/>
+                        <f:param name="editId" value="#{currentItem.key}"/>
                     </p:link>
+                    </f:verbatim>
                 </p:column>
 
-                </f:verbatim>
 
             </p:dataTable>
 

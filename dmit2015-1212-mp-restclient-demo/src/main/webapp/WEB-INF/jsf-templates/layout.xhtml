@@ -35,18 +35,19 @@
 </h:head>
 
 <h:body style="padding: 60px; min-height: 2000px;">
+<f:view locale="#{localeController.currentLocale}">
 
     <div class="card">
         <h:form>
             <p:growl id="growl"/>
 
             <p:menubar>
-                <p:menuitem value="Home" icon="pi pi-fw pi-home" url="#{request.contextPath}/index.xhtml"/>
+                <p:menuitem value="#{bundle['home']}" icon="pi pi-fw pi-home" url="#{request.contextPath}/index.xhtml"/>
 
-                <p:submenu label="Movies" icon="pi pi-fw pi-file">
-                    <p:menuitem value="List" icon="pi pi-fw pi-list"
+                <p:submenu label="#{bundle['movies']}" icon="pi pi-fw pi-file">
+                    <p:menuitem value="#{bundle['view.movies']}" icon="pi pi-fw pi-list"
                                 url="#{request.contextPath}/Movie/index.xhtml"/>
-                    <p:menuitem value="Create" icon="pi pi-fw pi-plus"
+                    <p:menuitem value="#{bundle['new.movie']}" icon="pi pi-fw pi-plus"
                                 url="#{request.contextPath}/Movie/create.xhtml"/>
                 </p:submenu>
                 <f:verbatim>
@@ -62,17 +63,18 @@
 
     <hr/>
     <footer>
-        <p>This
+        <p>#{bundle['footer1']}
             <a href="https://eclipse-ee4j.github.io/jakartaee-tutorial" target="_blanks">Jakarta EE 9.1</a>
-            web application is built using
+            #{bundle['footer2']}
             <a href="https://www.jetbrains.com/idea/" target="_blanks">IntelliJ IDEA</a>,
             <a href="https://jakarta.ee/specifications/faces/3.0/jakarta-faces-3.0.html" target="_blanks">JSF</a>,
             <a href="https://omnifaces.org/" target="_blanks">OmniFaces</a>,
             <a href="https://primefaces.org/" target="_blanks">PrimeFaces</a>,
-            and runs on
+            #{bundle['footer3']}
             <a href="http://www.wildfly.org/" target="_blanks">WildFly</a>
         </p>
     </footer>
+</f:view>
 
     <ui:insert name="bodyscripts">
     </ui:insert>

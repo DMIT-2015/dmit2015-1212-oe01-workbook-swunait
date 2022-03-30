@@ -18,6 +18,19 @@
     <ui:define name="maincontent">
         <h1>MP REST Client Demo</h1>
 
+        <h:form>
+            <label for="locale">#{bundle['choose.language']}</label>
+            <p:selectOneMenu id="locale" value="#{localeController.languageTag}">
+                <f:selectItems
+                        value="#{localeController.availableLocales}"
+                        var="currentLocale"
+                        itemLabel="#{currentLocale.getDisplayLanguage(currentLocale)} (#{currentLocale.getDisplayName(localeController.defaultLocale)})"
+                        itemValue="#{currentLocale.toLanguageTag()}">
+                </f:selectItems>
+                <f:ajax listener="#{localeController.reload()}" />
+            </p:selectOneMenu>
+        </h:form>
+
     </ui:define>
 
 </ui:composition>

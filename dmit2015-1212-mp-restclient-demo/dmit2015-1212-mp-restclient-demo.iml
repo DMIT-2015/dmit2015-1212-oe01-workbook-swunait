@@ -48,7 +48,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.json.bind:jakarta.json.bind-api:2.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.json:jakarta.json-api:2.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.ws.rs:jakarta.ws.rs-api:3.0.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.faces:jakarta.faces-api:3.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.servlet:jakarta.servlet-api:5.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
@@ -56,5 +55,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.2" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.faces:jakarta.faces-api:3.0.0" level="project" />
   </component>
 </module>

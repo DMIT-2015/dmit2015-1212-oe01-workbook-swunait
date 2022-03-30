@@ -13,18 +13,27 @@
         template="/WEB-INF/jsf-templates/layout.xhtml"
 >
 
-    <ui:param name="title" value="#{bundle['new.movie']}"/>
+    <ui:param name="title" value="Edit Movie"/>
 
     <ui:define name="maincontent">
 
-        <h1>#{bundle['new.movie']}</h1>
+        <h1>Edit Movie</h1>
 
         <p:messages id="messages"/>
 
         <h:form>
-            <p:focus context="panel"/>
 
-            <p:panel id="panel" header="#{bundle['movie.details']}">
+            <p:panel header="#{bundle['movie.details']}">
+
+                <div class="field">
+                    <label for="key">Key</label>
+                    <p:inputText id="key"
+                                 label="Key"
+                                 value="#{currentMovieEditController.editId}"
+                                 class="inputfield w-full"
+                                 readonly="true">
+                    </p:inputText>
+                </div>
 
                 <div class="field">
                     <label for="title">#{bundle['title']}</label>
@@ -32,21 +41,17 @@
                             id="title"
                             type="text"
                             class="inputfield w-full"
-                            required="true"
-                            requiredMessage="#{bundle['movie.title.required']}"
-                            value="#{currentMovieCreateController.newMovie.title}">
+                            value="#{currentMovieEditController.existingMovie.title}">
                     </p:inputText>
                 </div>
 
                 <div class="field">
-                    <label for="releaseDate">#{bundle['release.date']}</label>
+                    <label for="title">#{bundle['release.date']}</label>
                     <p:inputText
                             id="releaseDate"
                             type="text"
                             class="inputfield w-full"
-                            required="true"
-                            requiredMessage="#{bundle['movie.releaseDate.required']}"
-                            value="#{currentMovieCreateController.newMovie.releaseDate}">
+                            value="#{currentMovieEditController.existingMovie.releaseDate}">
                     </p:inputText>
                 </div>
 
@@ -56,9 +61,7 @@
                             id="rating"
                             type="text"
                             class="inputfield w-full"
-                            required="true"
-                            requiredMessage="#{bundle['movie.rating.required']}"
-                            value="#{currentMovieCreateController.newMovie.rating}">
+                            value="#{currentMovieEditController.existingMovie.rating}">
                     </p:inputText>
                 </div>
 
@@ -68,9 +71,7 @@
                             id="genre"
                             type="text"
                             class="inputfield w-full"
-                            required="true"
-                            requiredMessage="#{bundle['movie.genre.required']}"
-                            value="#{currentMovieCreateController.newMovie.genre}">
+                            value="#{currentMovieEditController.existingMovie.genre}">
                     </p:inputText>
                 </div>
 
@@ -80,20 +81,18 @@
                             id="price"
                             type="text"
                             class="inputfield w-full"
-                            required="true"
-                            requiredMessage="#{bundle['movie.price.required']}"
-                            value="#{currentMovieCreateController.newMovie.price}">
+                            value="#{currentMovieEditController.existingMovie.price}">
                     </p:inputText>
                 </div>
 
-                <p:commandButton
-                        value="Create"
-                        icon="pi pi-save"
-                        action="#{currentMovieCreateController.onCreateNew()}"
-                        update=":messages @form"
-                />
 
             </p:panel>
+
+            <p:commandButton value="Save"
+                             icon="pi pi-save"
+                             action="#{currentMovieEditController.onSave()}"
+                             update=":messages @form"/>
+            |
             <p:link id="backToListLink" outcome="index" value="Back to List">
             </p:link>
 

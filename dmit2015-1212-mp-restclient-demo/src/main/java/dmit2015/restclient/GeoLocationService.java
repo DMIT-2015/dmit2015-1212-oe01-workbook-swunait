@@ -1,10 +1,9 @@
 package dmit2015.restclient;
 
-import jakarta.json.JsonObject;
-import jakarta.ws.rs.*;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.QueryParam;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-import java.util.Map;
 
 /**
  * The baseUri for the web service be set in either microprofile-config.properties (recommended)
@@ -16,48 +15,36 @@ import java.util.Map;
  *          package-name.ClassName/mp-rest/url=baseUri
  *       For example:
  *          package-name:    dmit2015.restclient
- *          ClassName:       MovieService
- *          baseUri:         https://yourFirebaseProjectName-default-rtdb.firebaseio.com
+ *          ClassName:       GeoLocationService
+ *          baseUri:         https://api.ipgeolocation.io/ipgeo
  *       The key/value pair you need to add is:
- *          dmit2015.restclient.MovieService/mp-rest/url=https://yourFirebaseProjectName-default-rtdb.firebaseio.com
+ *          dmit2015.restclient.GeoLocationService/mp-rest/url=https://api.ipgeolocation.io/ipgeo
  *
  *
  * To use the client interface from an environment does support CDI, add @Inject and @RestClient before the field declaration such as:
  *
  *     @Inject
  *     @RestClient
- *     private MovieService _movieService;
+ *     private GeoLocationService _geoLocationService;
  *
  * To use the client interface from an environment that does not support CDI, you can use the RestClientBuilder class to programmatically build an instance as follows:
  *
  *      URI apiURi = new URI("http://sever/path");
- *      MovieService _movieService = RestClientBuilder.newBuilder()
+ *      GeoLocationService _geoLocationService = RestClientBuilder.newBuilder()
  *                 .baseUri(apiURi)
- *                 .build(MovieService.class);
+ *                 .build(GeoLocationService.class);
  *
  */
-//@RegisterRestClient(baseUri = "https://yourFirebaseProjectName-default-rtdb.firebaseio.com")
+//@RegisterRestClient(baseUri = "https://api.ipgeolocation.io/ipgeo")
 @RegisterRestClient
-public interface MovieService {
-
-    @POST
-    @Path("/movies.json")
-    JsonObject create(Movie newMovie);
+public interface GeoLocationService {
 
     @GET
-    @Path("/movies.json")
-    Map<String, Movie> list();
+    GeoLocation withIPAddress(
+            @QueryParam("apiKey") String apiKey,
+            @QueryParam("ip") String ip);
 
     @GET
-    @Path("/movies/{key}.json")
-    Movie findById(@PathParam("key") String id);
-
-    @PUT
-    @Path("/movies/{key}.json")
-    Movie update(@PathParam("key") String id, Movie existingMovie);
-
-    @DELETE
-    @Path("/movies/{key}.json")
-    void delete(@PathParam("key") String id);
+    GeoLocation withoutIPAddress(@QueryParam("apiKey") String apiKey );
 
 }
