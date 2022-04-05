@@ -4,7 +4,6 @@ import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import lombok.Getter;
-import lombok.Setter;
 import org.omnifaces.util.Faces;
 
 import java.io.Serializable;
@@ -38,7 +37,7 @@ public class LocaleController implements Serializable {
     }
 
     public void reload() {
-        // The JavaScript "locaation.replace(locaton)" is used to reload the current document without keeping the previous document in history.
+        // The JavaScript "location.replace(location)" is used to reload the current document without keeping the previous document in history.
         Faces.getContext().getPartialViewContext().getEvalScripts().add("location.replace(location)");
     }
 

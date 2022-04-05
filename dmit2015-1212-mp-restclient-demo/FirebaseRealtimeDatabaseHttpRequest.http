@@ -40,26 +40,26 @@ Content-Type: application/json
 GET https://dmit2015-demo-default-rtdb.firebaseio.com/movies.json
 
 ### GET One Movie by Key
-GET https://dmit2015-demo-default-rtdb.firebaseio.com/movies/-MzL8GsgkaiJaQ-oMwp5.json
+GET https://dmit2015-demo-default-rtdb.firebaseio.com/movies/-MzSWk59MibTsKxdOPoW.json
 
 ### UPDATE Movie and change price to 19.98 and genre to action for movie with key -MzL8GsgkaiJaQ-oMwp5
-PUT https://dmit2015-demo-default-rtdb.firebaseio.com/movies/-MzL8GsgkaiJaQ-oMwp5.json
+PUT https://dmit2015-demo-default-rtdb.firebaseio.com/movies/-MzSWk59MibTsKxdOPoW.json
 Content-Type: application/json
 
 {
-  "title":"Turning Red",
-  "releaseDate": "2022-02-21",
+  "title":"Will Smith is King Richard",
+  "releaseDate": "2022-03-30",
   "genre": "action",
-  "rating": "PG",
-  "price": 19.98
+  "rating": "R",
+  "price": 99.98
 }
 
 ### PATCH Movie and change release date to 2021-10-22 for movie with key -MzL7dqy25IRLB58OtZN
-PATCH https://dmit2015-demo-default-rtdb.firebaseio.com/movies/-MzL7dqy25IRLB58OtZN.json
+PATCH https://dmit2015-demo-default-rtdb.firebaseio.com/movies/-MzSWk59MibTsKxdOPoW.json
 Content-Type: application/json
 
 {
-  "releaseDate": "2022-10-22"
+  "title": "Will Smith slaps Chris Rock"
 }
 
 

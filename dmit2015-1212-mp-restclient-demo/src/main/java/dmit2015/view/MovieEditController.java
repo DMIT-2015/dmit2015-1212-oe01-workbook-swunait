@@ -43,10 +43,10 @@ public class MovieEditController implements Serializable {
             if (editId != null) {
                 existingMovie = _movieService.findById(editId);
                 if (existingMovie == null) {
-                    Faces.redirect(Faces.getRequestURI().substring(0, Faces.getRequestURI().lastIndexOf("/")) + "/index");
+                    Faces.redirect(Faces.getRequestURI().substring(0, Faces.getRequestURI().lastIndexOf("/")) + "/index.xhtml");
                 }
             } else {
-                Faces.redirect(Faces.getRequestURI().substring(0, Faces.getRequestURI().lastIndexOf("/")) + "/index");
+                Faces.redirect(Faces.getRequestURI().substring(0, Faces.getRequestURI().lastIndexOf("/")) + "/index.xhtml");
             }
         }
     }
