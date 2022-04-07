@@ -49,6 +49,16 @@
                     <p:menuitem value="Create" icon="pi pi-fw pi-plus"
                                 url="#{request.contextPath}/Movie/create.xhtml"/>
                 </p:submenu>
+
+                <c:if test="${not empty request.userPrincipal}">
+                    <p:menuitem value="Logout #{request.userPrincipal.name}"
+                                action="#{logout.submit}" />
+                </c:if>
+
+                <c:if test="${empty request.userPrincipal}">
+                    <p:menuitem value="Login" action="/customLogin" />
+                </c:if>
+
                 <f:verbatim>
                 </f:verbatim>
 

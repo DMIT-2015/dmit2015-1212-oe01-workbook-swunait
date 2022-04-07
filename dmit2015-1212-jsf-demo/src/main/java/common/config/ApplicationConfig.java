@@ -4,6 +4,31 @@ import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.annotation.sql.DataSourceDefinitions;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.faces.annotation.FacesConfig;
+import jakarta.security.enterprise.authentication.mechanism.http.CustomFormAuthenticationMechanismDefinition;
+import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
+import jakarta.security.enterprise.identitystore.LdapIdentityStoreDefinition;
+
+//@BasicAuthenticationMechanismDefinition(
+//		realmName="jaspitest"
+//)
+
+@CustomFormAuthenticationMechanismDefinition(
+		loginToContinue = @LoginToContinue(
+				loginPage="/customLogin.xhtml",
+				useForwardToLogin = false,
+				errorPage=""
+		)
+)
+
+@LdapIdentityStoreDefinition(
+		url = "ldap://192.168.101.139:389",
+		callerSearchBase = "ou=Departments,dc=dmit2015,dc=ca",
+		callerNameAttribute = "SamAccountName", // SamAccountName or UserPrincipalName
+		groupSearchBase = "ou=Departments,dc=dmit2015,dc=ca",
+		bindDn = "cn=DAUSTIN,ou=IT,ou=Departments,dc=dmit2015,dc=ca",
+		bindDnPassword = "Password2015",
+		priority = 5
+)
 
 @DataSourceDefinitions({
 

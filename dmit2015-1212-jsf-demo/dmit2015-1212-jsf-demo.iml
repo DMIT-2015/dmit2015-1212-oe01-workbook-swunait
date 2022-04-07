@@ -38,6 +38,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.glassfish.soteria:jakarta.security.enterprise:2.0.1" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.security.enterprise:jakarta.security.enterprise-api:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.annotation:jakarta.annotation-api:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.ejb:jakarta.ejb-api:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:3.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.platform:jakarta.jakartaee-web-api:9.1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.enterprise:jakarta.enterprise.cdi-api:3.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.interceptor:jakarta.interceptor-api:2.0.0" level="project" />
@@ -45,7 +50,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.ws.rs:jakarta.ws.rs-api:3.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.json.bind:jakarta.json.bind-api:2.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.json:jakarta.json-api:2.0.1" level="project" />
-    <orderEntry type="library" name="Maven: jakarta.annotation:jakarta.annotation-api:2.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.microprofile.config:microprofile-config-api:3.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.microprofile.fault-tolerance:microprofile-fault-tolerance-api:4.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.microprofile.health:microprofile-health-api:4.0" level="project" />
@@ -66,7 +70,6 @@
     <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.dom4j:dom4j:2.1.3" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.1.2.Final" level="project" />
-    <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.microsoft.sqlserver:mssql-jdbc:10.2.0.jre17" level="project" />
     <orderEntry type="library" name="Maven: org.primefaces:primefaces:jakarta:11.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.npm:primeflex:3.1.3" level="project" />
