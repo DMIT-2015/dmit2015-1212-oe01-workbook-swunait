@@ -21,7 +21,7 @@ import jakarta.security.enterprise.identitystore.LdapIdentityStoreDefinition;
 )
 
 @LdapIdentityStoreDefinition(
-		url = "ldap://192.168.101.139:389",
+		url = "ldap://192.168.101.128:389",
 		callerSearchBase = "ou=Departments,dc=dmit2015,dc=ca",
 		callerNameAttribute = "SamAccountName", // SamAccountName or UserPrincipalName
 		groupSearchBase = "ou=Departments,dc=dmit2015,dc=ca",

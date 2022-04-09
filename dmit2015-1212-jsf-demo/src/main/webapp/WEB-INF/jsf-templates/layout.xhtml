@@ -50,6 +50,13 @@
                                 url="#{request.contextPath}/Movie/create.xhtml"/>
                 </p:submenu>
 
+                <p:submenu label="Public Movie" icon="pi pi-fw pi-file">
+                    <p:menuitem value="List" icon="pi pi-fw pi-list"
+                                url="#{request.contextPath}/public/Movie/index.xhtml"/>
+                    <p:menuitem value="Create" icon="pi pi-fw pi-plus"
+                                url="#{request.contextPath}/public/Movie/create.xhtml"/>
+                </p:submenu>
+
                 <c:if test="${not empty request.userPrincipal}">
                     <p:menuitem value="Logout #{request.userPrincipal.name}"
                                 action="#{logout.submit}" />

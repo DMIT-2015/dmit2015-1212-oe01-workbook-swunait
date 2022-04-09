@@ -1,0 +1,92 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Movie - List"/>
+
+    <ui:define name="maincontent">
+
+        <h1>Movie List</h1>
+
+        <p:messages id="messages"/>
+
+        <h:form>
+
+            <p:commandButton value="Create New"
+                             action="create"
+                             icon="pi pi-database"
+            >
+            </p:commandButton>
+
+            <p:dataTable id="entityTable"
+                         value="#{currentMovieListController.movieList}"
+                         var="currentItem">
+
+                <p:column headerText="ID">
+                    <h:outputText value="#{currentItem.id}"/>
+                </p:column>
+
+                <p:column headerText="Title">
+                    <h:outputText value="#{currentItem.title}"/>
+                </p:column>
+
+                <p:column headerText="Rating">
+                    <h:outputText value="#{currentItem.rating}"/>
+                </p:column>
+
+                <p:column headerText="Genre">
+                    <h:outputText value="#{currentItem.genre}"/>
+                </p:column>
+
+                <p:column headerText="Price">
+                    <h:outputText value="#{currentItem.price}">
+                        <f:convertNumber type="currency" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="Release">
+                    <h:outputText value="#{currentItem.releaseDate}">
+                        <f:convertDateTime type="localDate" pattern="MMM dd, yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="Action">
+                    <p:link id="editLink" outcome="edit" value="edit">
+                        <f:param name="editId" value="#{currentItem.id}"/>
+                    </p:link>
+
+                    |
+
+                    <p:link id="detailsLink" outcome="details" value="details">
+                        <f:param name="editId" value="#{currentItem.id}"/>
+                    </p:link>
+
+
+                    |
+
+                    <p:link id="deleteLink" outcome="delete" value="delete">
+                        <f:param name="editId" value="#{currentItem.id}"/>
+                    </p:link>
+                    <f:verbatim>
+                </f:verbatim>
+                </p:column>
+
+
+        </p:dataTable>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

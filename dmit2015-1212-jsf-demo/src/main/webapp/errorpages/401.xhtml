@@ -1,0 +1,16 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        template="/WEB-INF/jsf-templates/layout.xhtml">
+
+    <ui:param name="title" value="Unauthorized"/>
+
+    <ui:define name="maincontent">
+        <h1>HTTP Error 401 - Unauthorized</h1>
+
+        <p>You need to login to access the requested resource #{requestScope['jakarta.servlet.error.request_uri']}.
+        </p>
+
+    </ui:define>
+
+</ui:composition>
