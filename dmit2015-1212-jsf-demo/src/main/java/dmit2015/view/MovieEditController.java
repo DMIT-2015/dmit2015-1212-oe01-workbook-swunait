@@ -3,6 +3,7 @@ package dmit2015.view;
 import dmit2015.entity.Movie;
 import dmit2015.repository.MovieRepository;
 
+import jakarta.ejb.EJB;
 import lombok.Getter;
 import lombok.Setter;
 import org.omnifaces.util.Faces;
@@ -24,7 +25,8 @@ public class MovieEditController implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @Inject
+//    @Inject
+    @EJB
     private MovieRepository _movieRepository;
 
     @Inject

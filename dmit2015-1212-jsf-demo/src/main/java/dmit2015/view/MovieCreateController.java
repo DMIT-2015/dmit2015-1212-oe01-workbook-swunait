@@ -2,17 +2,17 @@ package dmit2015.view;
 
 import dmit2015.entity.Movie;
 import dmit2015.repository.MovieRepository;
-
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import lombok.Getter;
 import org.omnifaces.util.Messages;
 
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import java.io.Serializable;
 
 @Named("currentMovieCreateController")
-@RequestScoped
-public class MovieCreateController {
+@ViewScoped
+public class MovieCreateController implements Serializable {
 
     @Inject
     private MovieRepository _movieRepository;

@@ -1,0 +1,61 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Login"/>
+
+    <ui:define name="maincontent">
+
+        <c:if test="#{not empty loginSession.username}">
+            <p>Logged-in as #{loginSession.username}</p>
+        </c:if>
+
+        <c:if test="#{empty loginSession.username}">
+            <h1>Sign in</h1>
+
+            <p:messages id="messages" />
+
+            <h:form name="loginForm">
+                <h2 class="form-signin-heading">Please sign in</h2>
+
+                <div class="field">
+                    <label for="username">Username</label>
+                    <p:inputText id="username"
+                                 placeholder="username"
+                                 class="inputfield w-full"
+                                 value="#{login.username}">
+                    </p:inputText>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <p:password id="password"
+                                placeholder="Password"
+                                class="inputfield w-full"
+                                value="#{login.password}">
+                    </p:password>
+                </div>
+
+                <p:commandButton value="Login"
+                                 icon="pi pi-sign-in"
+                                 action="#{login.submit()}"
+                                 update=":messages @form"/>
+
+            </h:form>
+
+        </c:if>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,51 @@
+### Get all Employee
+GET https://localhost:8443/backend/webapi/employees
+
+
+
+### POST a new Employee
+POST https://localhost:8443/backend/webapi/employees
+Content-Type: application/json
+
+{
+  "name": "Samwise Gamgee",
+  "role": "gardener"
+}
+
+### GET a JWT token for DAUSTIN
+POST https://localhost:8443/backend/webapi/jwt/ldapJsonLogin
+Content-Type: application/json
+
+{
+  "username": "SKING",
+  "password": "Password2015"
+}
+
+### POST a new Employee
+POST https://localhost:8443/backend/webapi/employees
+Content-Type: application/json
+Authorization: Bearer eyJraWQiOiJxdWlja3N0YXJ0LWp3dC1pc3N1ZXIiLCJ0eXAiOiJqd3QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJTS0lORyIsInVwbiI6IlNLSU5HIiwiaXNzIjoicXVpY2tzdGFydC1qd3QtaXNzdWVyIiwiYXVkIjoiand0LWF1ZGllbmNlIiwiZ3JvdXBzIjpbIkV4ZWN1dGl2ZSJdLCJqdGkiOiJjMjgzYzNhZC1jYzQ1LTRlYzMtYjg5Ni0zOGI4MjBkMWZmZjgiLCJpYXQiOjE2NDk5MDExMzcsImV4cCI6MTY0OTkxNTUzN30.Dx0iNFMAXF0Osei54m5RXjSfM9fVMUrOquBig6PcnkkFTIU6bmXEMfgiJnJLycd_O-mY5vd6t8F3Fttr1fQAknHtJx5fKuZ9_nSjd1hT1vNtcC3a4djScFmP6hmfCk2x3M7R-lHjdqlp0ocReJ2xmbCNnIUZPMOJRw71fnwoSw7zbHzCm2yVlpqAID7YLvEDA2dv2xelTk1rVWGPu1TeT7CklmNYF08oSzJhnVOz8dVIs3CkjfXg1KxzuuXiMUTHhuN9LCdn9Uhze1KGtTRQiqvqu_FqIV1K2Mzs71OL3Py5ghqbjwA7DLcqfzlE6i8BAlbGzkSOVtpzIcohe009AA
+
+{
+  "name": "Samwise Gamgee",
+  "role": "gardener"
+}
+
+### Update Employee
+PUT https://localhost:8443/backend/webapi/employees/3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "Samwise Gamgee",
+  "role": "ring bearer"
+}
+
+### Delete Employee
+DELETE https://localhost:8443/backend/webapi/employees/3
+
+### Now if we look again, it's gone
+GET https://localhost:8443/backend/webapi/employees/3
+
+
+
