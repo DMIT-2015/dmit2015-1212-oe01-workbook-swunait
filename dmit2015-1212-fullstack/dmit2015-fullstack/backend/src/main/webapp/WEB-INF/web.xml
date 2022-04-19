@@ -27,7 +27,7 @@
 
     <context-param>
         <param-name>ldap.server</param-name>
-        <param-value>192.168.101.151</param-value>
+        <param-value>192.168.101.157</param-value>
     </context-param>
     <context-param>
         <param-name>ldap.bind.name</param-name>

@@ -43,14 +43,23 @@
             <p:menubar>
                 <p:menuitem value="Home" icon="pi pi-fw pi-home" url="#{request.contextPath}/index.xhtml"/>
 
-                <f:verbatim>
-                    <p:submenu label="Entity" icon="pi pi-fw pi-file">
-                        <p:menuitem value="List" icon="pi pi-fw pi-list"
-                                    url="#{request.contextPath}/Entity/index.xhtml"/>
-                        <p:menuitem value="Create" icon="pi pi-fw pi-plus"
-                                    url="#{request.contextPath}/Entity/create.xhtml"/>
-                    </p:submenu>
-                </f:verbatim>
+                <p:submenu label="Employee" icon="pi pi-fw pi-file">
+                    <p:menuitem value="List" icon="pi pi-fw pi-list"
+                                url="#{request.contextPath}/employees/index.xhtml"/>
+                    <p:menuitem value="Create" icon="pi pi-fw pi-plus"
+                                url="#{request.contextPath}/employees/create.xhtml"/>
+                </p:submenu>
+
+                <c:if test="${empty loginSession.username}">
+                    <p:menuitem
+                            value="Login"
+                            action="/login" />
+                </c:if>
+                <c:if test="${not empty loginSession.username}">
+                    <p:menuitem
+                            value="Logout #{loginSession.username}"
+                            action="#{logout.submit}" />
+                </c:if>
 
             </p:menubar>
         </h:form>
